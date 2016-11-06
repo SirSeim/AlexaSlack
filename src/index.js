@@ -99,6 +99,10 @@ exports.handler = function (event, context) {
                 {
                     name: "triumph",
                     emoji: "\u{1f624}"
+                },
+                {
+                    name: "sad face",
+                    emoji: "\u{1f62d}"
                 }
             ];
 
