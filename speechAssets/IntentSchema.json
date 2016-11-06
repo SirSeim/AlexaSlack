@@ -6,13 +6,14 @@
     {
       "intent": "PostMessageToChannel",
       "slots": [
-         {
+        {
           "name": "channel",
-          "type": "string"
-         },
-         {
-          "message": "object"
-         }
+          "type": "CHANNEL_TYPE"
+        },
+        {
+          "name": "message",
+          "type": "MESSAGE_TYPE"
+        }
       ]
     },
     {
