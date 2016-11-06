@@ -139,7 +139,7 @@ exports.handler = function (event, context) {
             }
 
             var pathValue = '/api/chat.postMessage?token=' + token + '&channel=' +
-                                channel + '&text=' + encodeURIComponent(message);
+                                channel + '&text=' + encodeURIComponent(message) + '&username=sirseim';
 
             var post_options = { 
                 host: 'slack.com', 
