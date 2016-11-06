@@ -13,6 +13,10 @@
         {
           "name": "message",
           "type": "MESSAGE_TYPE"
+        },
+        {
+         "name": "emoji",
+         "type": "EMOJI_TYPE"
         }
       ]
     },

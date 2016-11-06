@@ -12,7 +12,7 @@ exports.handler = function (event, context) {
     var pop = 0;
     var rank = 0;
 
-    var token = 'xoxp-75550810404-75820623957-101727319607-70ad9af083bbe8749f1f802c4412ec8c';
+    var token = 'xoxp-75550810404-75820623957-100368457809-0d1a72240ace70811cc2689def642c0b';
 
     if (event.session.attributes) {
         sessionAttributes = event.session.attributes;
@@ -73,6 +73,7 @@ exports.handler = function (event, context) {
 
             myChannel = event.request.intent.slots.channel.value;
             myMessage = event.request.intent.slots.message.value;
+            myEmoji = event.request.intent.slots.emoji.value;
 
             var channel = "G2Z2R2B1B";
 
@@ -93,22 +94,43 @@ exports.handler = function (event, context) {
                 }
             ];
 
+            var emojiList = [
+                {
+                    name: "triumph",
+                    emoji: "\u{1f624}"
+                }
+            ];
 
             var message = "";
-            for (var i = 0; i < messageEmoji.length; i++) {
-                if (myMessage === messageEmoji[i].message) {
-                    message = myMessage + ' ' + messageEmoji[i].emoji;
+            if (myEmoji) {
+                for (var i = 0; i < emojiList.length; i++) {
+                    if (myEmoji === emojiList[i].name) {
+                        message = myMessage + ' ' + emojiList[i].emoji;
+                    }
+                    // if (myMessage === messageEmoji[i]){
+                    //     var pathValue = '/api/chat.postMessage?token=xoxp-75550810404-75820623957-100359189585-ef895940a0f87b74aa880b872390bbec&channel=' +
+                    //                 channel + '&text=' + myMessage + emoji;
+                    // } else {
+                    //     var pathValue = '/api/chat.postMessage?token=xoxp-75550810404-75820623957-100359189585-ef895940a0f87b74aa880b872390bbec&channel=' +
+                    //                 channel + '&text=' + myMessage;
+                    // }
                 }
-                // if (myMessage === messageEmoji[i]){
-                //     var pathValue = '/api/chat.postMessage?token=xoxp-75550810404-75820623957-100359189585-ef895940a0f87b74aa880b872390bbec&channel=' +
-                //                 channel + '&text=' + myMessage + emoji;
-                // } else {
-                //     var pathValue = '/api/chat.postMessage?token=xoxp-75550810404-75820623957-100359189585-ef895940a0f87b74aa880b872390bbec&channel=' +
-                //                 channel + '&text=' + myMessage;
-                // }
-            }
-            if (!message) {
-                message = myMessage;
+            } else {
+                for (var i = 0; i < messageEmoji.length; i++) {
+                    if (myMessage === messageEmoji[i].message) {
+                        message = myMessage + ' ' + messageEmoji[i].emoji;
+                    }
+                    // if (myMessage === messageEmoji[i]){
+                    //     var pathValue = '/api/chat.postMessage?token=xoxp-75550810404-75820623957-100359189585-ef895940a0f87b74aa880b872390bbec&channel=' +
+                    //                 channel + '&text=' + myMessage + emoji;
+                    // } else {
+                    //     var pathValue = '/api/chat.postMessage?token=xoxp-75550810404-75820623957-100359189585-ef895940a0f87b74aa880b872390bbec&channel=' +
+                    //                 channel + '&text=' + myMessage;
+                    // }
+                }
+                if (!message) {
+                    message = myMessage;
+                }
             }
 
             var pathValue = '/api/chat.postMessage?token=' + token + '&channel=' +
