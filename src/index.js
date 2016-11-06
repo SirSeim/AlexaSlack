@@ -12,7 +12,7 @@ exports.handler = function (event, context) {
     var pop = 0;
     var rank = 0;
 
-    var token = 'xoxp-75550810404-75820623957-100339349520-68be28728e57dfe471a04a414f187e56';
+    var token = 'xoxp-75550810404-75820623957-100371163681-5349e10b4d35ee36718ee771eb14ad28';
 
     if (event.session.attributes) {
         sessionAttributes = event.session.attributes;
@@ -76,7 +76,7 @@ exports.handler = function (event, context) {
             myEmoji = event.request.intent.slots.emoji.value;
 
             var channel = "G2Z2R2B1B";
-            var emoji = ;
+            var emoji = "";
 
             // if (myChannel === "general") {
             //     channel = "C27EV0GTD";
