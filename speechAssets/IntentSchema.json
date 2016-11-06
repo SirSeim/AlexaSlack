@@ -1,18 +1,20 @@
-//Example Code from AMZN github samples
 {
   "intents": [
     {
       "intent": "GetChannelsIntent"
     },
-    // {
-    //   "intent": "GetChannelsIntent",
-    //   "slots":[
-    //     {
-    //       "name":"usstate",
-    //       "type":"AMAZON.US_STATE"
-    //     }
-    //   ]
-    // },
+    {
+      "intent": "PostMessageToChannel",
+      "slots": [
+         {
+          "name": "channel",
+          "type": "string"
+         },
+         {
+          "message": "object"
+         }
+      ]
+    },
     {
       "intent": "AMAZON.StartOverIntent"
     },

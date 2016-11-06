@@ -2,8 +2,8 @@ GetChannelsIntent show all channels
 GetChannelsIntent what are my channels
 GetChannelsIntent what channels exist
 
-WriteToChannel slack {channel} and say {message}
-WriteToChannel write {channel} and say {message}
-WriteToChannel tell {channel} and say {message}
-WriteToChannel message {channel} and say {message}
+PostMessageToChannel slack {channel} and say {message}
+PostMessageToChannel write to {channel} and say {message}
+PostMessageToChannel tell {channel} and say {message}
+PostMessageToChannel message {channel} and say {message}
 

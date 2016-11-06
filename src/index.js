@@ -1,7 +1,3 @@
-// This code sample shows how to call and receive external rest service data, within your skill Lambda code.
-
-// var AWS = require('aws-sdk');
-
 var https = require('https');
 
 exports.handler = function (event, context) {
