@@ -12,7 +12,7 @@ exports.handler = function (event, context) {
     var pop = 0;
     var rank = 0;
 
-    var token = 'xoxp-75550810404-75820623957-100371163681-5349e10b4d35ee36718ee771eb14ad28';
+    var token = 'xoxp-75550810404-75820623957-101049439266-51ccaae31df6d5c910474f0cb9cdac6e';
 
     if (event.session.attributes) {
         sessionAttributes = event.session.attributes;
@@ -162,7 +162,11 @@ exports.handler = function (event, context) {
 
                     //Change
                     console.log(json);
-                    say = "Sent " + json.ok;
+                    if (json.ok) {
+                        say = "Sent";
+                    } else {
+                        say = "Error, " + json.error;
+                    }
 
                     // add the state to a session.attributes array
                     if (!sessionAttributes.requestList) {
