@@ -28,7 +28,7 @@ exports.handler = function (event, context) {
             var get_options = {
                 host: 'slack.com', 
                 port: '443', 
-                path: '/api/channels.list', 
+                path: '/api/channels.list?token=xoxp-75550810404-75820623957-101017059570-20767371fdf8f3facc2b231126fcc758', 
                 method: 'GET', 
                 headers: { 
                     'token': 'xoxp-75550810404-75820623957-101685910678-b3af602059bda41fbe174d0e78886ed3',
