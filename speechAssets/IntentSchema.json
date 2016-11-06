@@ -4,6 +4,9 @@
       "intent": "GetChannelsIntent"
     },
     {
+      "intent": "ReadMessageFromChannel"
+    },
+    {
       "intent": "PostMessageToChannel",
       "slots": [
         {

@@ -76,6 +76,7 @@ exports.handler = function (event, context) {
             myEmoji = event.request.intent.slots.emoji.value;
 
             var channel = "G2Z2R2B1B";
+            var emoji = ;
 
             // if (myChannel === "general") {
             //     channel = "C27EV0GTD";

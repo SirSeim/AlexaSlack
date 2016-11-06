@@ -2,8 +2,13 @@ GetChannelsIntent show all channels
 GetChannelsIntent what are my channels
 GetChannelsIntent what channels exist
 
-PostMessageToChannel slack {channel} and say {message}
+PostMessageToChannel slack {channel} and say {message} with {emoji}
+PostMessageToChannel message {channel} and tell them {message} with {emoji}
 PostMessageToChannel write to {channel} and say {message}
 PostMessageToChannel tell {channel} and say {message}
-PostMessageToChannel message {channel} and say {message}
+PostMessageToChannel message {channel} and say {message} 
 
+ReadMessageFromChannel read me last message from {channel} 
+ReadMessageFromChannel read last message from {channel}
+ReadMessageFromChannel check for new message in {channel}
+ReadMessageFromChannel does {channel} have any new messages
