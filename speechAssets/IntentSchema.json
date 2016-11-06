@@ -2,14 +2,17 @@
 {
   "intents": [
     {
-      "intent": "StateRequestIntent",
-      "slots":[
-        {
-          "name":"usstate",
-          "type":"AMAZON.US_STATE"
-        }
-      ]
+      "intent": "GetChannelsIntent"
     },
+    // {
+    //   "intent": "GetChannelsIntent",
+    //   "slots":[
+    //     {
+    //       "name":"usstate",
+    //       "type":"AMAZON.US_STATE"
+    //     }
+    //   ]
+    // },
     {
       "intent": "AMAZON.StartOverIntent"
     },
