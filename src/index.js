@@ -31,7 +31,6 @@ exports.handler = function (event, context) {
                 path: '/api/channels.list?token=xoxp-75550810404-75820623957-101017059570-20767371fdf8f3facc2b231126fcc758', 
                 method: 'GET', 
                 headers: { 
-                    'token': 'xoxp-75550810404-75820623957-101685910678-b3af602059bda41fbe174d0e78886ed3',
                     'Content-Type': 'application/json'
                 } 
             };
@@ -109,7 +108,7 @@ exports.handler = function (event, context) {
                     json = JSON.parse(returnData);
 
                     //Change
-                    say = "Sent";
+                    say = "Sent " + json.ok;
 
                     // add the state to a session.attributes array
                     if (!sessionAttributes.requestList) {
