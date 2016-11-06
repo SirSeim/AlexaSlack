@@ -129,6 +129,64 @@ exports.handler = function (event, context) {
             post_req.write(JSON.stringify(post_data));
             post_req.end();
 
+        } else if (IntentName === "ReadMessageFromChannel") {
+
+            myChannel = event.request.intent.slots.channel.value;
+
+            var channel = "G2Z2R2B1B";
+
+            // if (myChannel === "general") {
+            //     channel = "C27EV0GTD";
+            // } else if (myChannel === "random") {
+            //     channel = "C27GKA70X";
+            // }
+
+            var pathValue = '/api/groups.history?token=xoxp-75550810404-75820623957-100359189585-ef895940a0f87b74aa880b872390bbec&channel=' +
+                            channel + '&count=1&pretty=1';
+
+
+            var post_options = { 
+                host: 'slack.com', 
+                port: '443', 
+                path: pathValue, 
+                method: 'GET', 
+                headers: { 
+                    'Content-Type': 'application/json'
+                } 
+            };
+            var post_req = https.request(post_options, function (res) { 
+                res.setEncoding('utf8'); 
+                var returnData = ""; 
+                res.on('data', function (chunk) { 
+                    returnData += chunk; 
+                }); 
+                res.on('end', function () {
+                    // returnData: {"usstate":"Delaware","attributes":[{"population":900000},{"rank":45}]}
+
+                    json = JSON.parse(returnData);
+
+                    if (json.ok) {
+                        say = "The latest message was, " + json.messages[0].text;
+                    } else {
+                        say = "Error, " + json.error;
+                    }
+                    //Change
+                    console.log(json);
+                    console.log(say);
+
+                    // add the state to a session.attributes array
+                    if (!sessionAttributes.requestList) {
+                        sessionAttributes.requestList = [];
+                    }
+                    sessionAttributes.requestList.push(myState);
+
+                    // This line concludes the lambda call.  Move this line to within any asynchronous callbacks that return and use data.
+                    context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
+
+                }); 
+            });
+            post_req.end();
+
 
         } else if (IntentName === "AMAZON.StopIntent" || IntentName === "AMAZON.CancelIntent") {
             say = "You asked for " + sessionAttributes.requestList.toString() + ". Thanks for playing!";
