@@ -80,6 +80,9 @@ exports.handler = function (event, context) {
             //     channel = "C27GKA70X";
             // }
 
+            var pathValue = '/api/chat.postMessage?token=xoxp-75550810404-75820623957-101017059570-20767371fdf8f3facc2b231126fcc758&channel=' +
+                            channel + '&text=' + myMessage;
+
 
             // call external rest service over https post
             var post_data = {
@@ -91,7 +94,7 @@ exports.handler = function (event, context) {
             var post_options = { 
                 host: 'slack.com', 
                 port: '443', 
-                path: '/api/chat.postMessage?token=xoxp-75550810404-75820623957-100357852097-d0f97377275777097493c4d2d0803f92&channel=G2Z2R2B1B&text=lit', 
+                path: pathValue, 
                 method: 'POST', 
                 headers: { 
                     'Content-Type': 'application/json', 
