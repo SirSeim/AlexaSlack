@@ -68,11 +68,62 @@ exports.handler = function (event, context) {
             });
             get_req.end();
 
+        } else if (IntentName === "PostMessageToChannel") {
+
+            if (event.request.intent.slots.message.value) {
+
+                myMessage = event.request.intent.slots.message.value;
+
+
+                // call external rest service over https post
+                var post_data = {
+                    token: "xoxp-75550810404-75820623957-101692038278-6b3c28b8147e56e4b82b0e26c07b27cb",
+                    channel: "alexa_hackathon",
+                    text: "saycommand",
+                    link_names: 1
+                };  
+                var post_options = { 
+                    host:  'rmwum5l4zc.execute-api.us-east-1.amazonaws.com', 
+                    port: '443', 
+                    path: '/prod/stateresource', 
+                    method: 'POST', 
+                    headers: { 
+                        'Content-Type': 'application/json', 
+                        'Content-Length': Buffer.byteLength(JSON.stringify(post_data)) 
+                    } };
+                      var post_req = https.request(post_options, function(res) { 
+                        res.setEncoding('utf8'); 
+                        var returnData = ""; 
+                        res.on('data', function (chunk) { 
+                            returnData += chunk; 
+                        }); 
+                        res.on('end', function () {
+                            // returnData: {"usstate":"Delaware","attributes":[{"population":900000},{"rank":45}]}
+
+                            json = JSON.parse(returnData);
+
+                            //Change
+                            say = "Sent";
+
+                            // add the state to a session.attributes array
+                            if (!sessionAttributes.requestList) {
+                                sessionAttributes.requestList = [];
+                            }
+                            sessionAttributes.requestList.push(myState);
+
+                            // This line concludes the lambda call.  Move this line to within any asynchronous callbacks that return and use data.
+                            context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
+
+                        }); 
+                    });
+                  post_req.write(JSON.stringify(post_data));
+                 post_req.end();
+
+            }
         } else if (IntentName === "AMAZON.StopIntent" || IntentName === "AMAZON.CancelIntent") {
             say = "You asked for " + sessionAttributes.requestList.toString() + ". Thanks for playing!";
             shouldEndSession = true;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
-
 
         } else if (IntentName === "AMAZON.HelpIntent" ) {
             say = "Just say the name of a U.S. State, such as Massachusetts or California."
