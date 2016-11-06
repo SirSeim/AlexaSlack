@@ -112,7 +112,7 @@ exports.handler = function (event, context) {
             }
 
             var pathValue = '/api/chat.postMessage?token=' + token + '&channel=' +
-                                channel + '&text=' + JSON.stringify(message);
+                                channel + '&text=' + encodeURIComponent(message);
 
             var post_options = { 
                 host: 'slack.com', 
@@ -148,7 +148,6 @@ exports.handler = function (event, context) {
 
                 }); 
             });
-            post_req.write(JSON.stringify(post_data));
             post_req.end();
 
         } else if (IntentName === "ReadMessageFromChannel") {
