@@ -237,7 +237,7 @@ exports.handler = function (event, context) {
 
 
         } else if (IntentName === "AMAZON.StopIntent" || IntentName === "AMAZON.CancelIntent") {
-            say = "You asked for " + sessionAttributes.requestList.toString() + ". Thanks for playing!";
+            say = "Closing out of Slack now, bye bye!";
             shouldEndSession = true;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
 
