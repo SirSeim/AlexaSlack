@@ -12,7 +12,7 @@ exports.handler = function (event, context) {
     var pop = 0;
     var rank = 0;
 
-    var token = 'xoxp-75550810404-75820623957-100368457809-0d1a72240ace70811cc2689def642c0b';
+    var token = 'xoxp-75550810404-75820623957-100339349520-68be28728e57dfe471a04a414f187e56';
 
     if (event.session.attributes) {
         sessionAttributes = event.session.attributes;
