@@ -72,6 +72,7 @@ exports.handler = function (event, context) {
 
             myChannel = event.request.intent.slots.channel.value;
             myMessage = event.request.intent.slots.message.value;
+
             var channel = "G2Z2R2B1B";
 
             // if (myChannel === "general") {
@@ -83,7 +84,7 @@ exports.handler = function (event, context) {
 
             // call external rest service over https post
             var post_data = {
-                token: "xoxp-75550810404-75820623957-101017059570-20767371fdf8f3facc2b231126fcc758",
+                token: "xoxp-75550810404-75820623957-100357852097-d0f97377275777097493c4d2d0803f92",
                 channel: channel,
                 text: myMessage,
                 link_names: 1
@@ -91,7 +92,7 @@ exports.handler = function (event, context) {
             var post_options = { 
                 host: 'slack.com', 
                 port: '443', 
-                path: '/api/chat.postMessage', 
+                path: '/api/chat.postMessage?token=xoxp-75550810404-75820623957-100357852097-d0f97377275777097493c4d2d0803f92&channel=G2Z2R2B1B&text=lit', 
                 method: 'POST', 
                 headers: { 
                     'Content-Type': 'application/json', 
@@ -109,7 +110,8 @@ exports.handler = function (event, context) {
                     json = JSON.parse(returnData);
 
                     //Change
-                    say = "Sent";
+                    console.log(json);
+                    say = "Sent " + json.ok;
 
                     // add the state to a session.attributes array
                     if (!sessionAttributes.requestList) {
@@ -125,7 +127,7 @@ exports.handler = function (event, context) {
             post_req.write(JSON.stringify(post_data));
             post_req.end();
 
-            
+
         } else if (IntentName === "AMAZON.StopIntent" || IntentName === "AMAZON.CancelIntent") {
             say = "You asked for " + sessionAttributes.requestList.toString() + ". Thanks for playing!";
             shouldEndSession = true;
