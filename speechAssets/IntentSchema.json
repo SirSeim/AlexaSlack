@@ -4,7 +4,11 @@
       "intent": "GetChannelsIntent"
     },
     {
-      "intent": "ReadMessageFromChannel"
+      "intent": "ReadMessageFromChannel",
+      "slots": {
+        "name": "channel",
+        "type": "CHANNEL_TYPE"
+      }
     },
     {
       "intent": "PostMessageToChannel",
